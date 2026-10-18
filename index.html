@@ -1,889 +1,302 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="An educational portal exploring natural products research, medicinal plants, phytochemistry, bioactive compounds, analytical chemistry, and drug discovery.">
-<meta name="theme-color" content="#173e2c">
-<title>Natura Research | Natural Products Science</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的导航页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('http://files.unn.pp.ua/download/pictures%2Fbackground.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .header {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .search-container {
+            padding: 3rem;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 20px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 15px 18px;
+            font-size: 20px;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+        }
+        
+        .link-item {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 12px;
+            transition: all 0.2s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .link-item:hover {
+            background-color: rgba(255, 255, 255, 0.85);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        }
+        
+        .link-item a {
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+        }
+        
+        .link-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 8px;
+            object-fit: contain;
+        }
+        
+        .link-text {
+            font-size: 14px;
+            text-align: center;
+            word-break: break-word;
+            max-width: 100%;
+        }
+        .foot_marker {
+            position: fixed;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+            z-index: 999;
+            padding: 10px 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        }
 
-<style>
-:root {
-  color-scheme: light;
-  --bg: #f4f7f2;
-  --surface: #ffffff;
-  --text: #24352b;
-  --muted: #68776d;
-  --primary: #216b4b;
-  --primary-dark: #174d35;
-  --accent: #a5cc83;
-  --soft: #e8f1e5;
-  --border: #dce6dc;
-  --shadow: 0 10px 30px rgba(29, 68, 43, .07);
-}
-body.dark {
-  color-scheme: dark;
-  --bg: #101a15;
-  --surface: #1a2820;
-  --text: #e5eee7;
-  --muted: #a7b7ab;
-  --primary: #91cba6;
-  --primary-dark: #b0dbbf;
-  --accent: #b9d994;
-  --soft: #25392c;
-  --border: #35483a;
-  --shadow: 0 10px 30px rgba(0, 0, 0, .18);
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 90px; }
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  transition: background .2s, color .2s;
-}
-a { color: inherit; text-decoration: none; }
-button, input, select { font: inherit; }
-button { cursor: pointer; }
-button:focus-visible, a:focus-visible, input:focus-visible,
-select:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-.container { width: min(1160px, 92%); margin: auto; }
+        .foot_marker a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
 
-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-.nav {
-  min-height: 76px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-.logo {
-  color: var(--primary);
-  font-size: 21px;
-  font-weight: 900;
-  letter-spacing: -.6px;
-  line-height: 1.2;
-}
-.logo small {
-  display: block;
-  margin-top: 5px;
-  color: var(--muted);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1.8px;
-}
-.nav-right { display: flex; align-items: center; gap: 20px; }
-.navlinks { display: flex; align-items: center; gap: 18px; }
-.navlinks a { font-size: 12px; font-weight: 700; }
-.navlinks a:hover { color: var(--primary); }
-.menu-btn {
-  display: none;
-  background: var(--soft);
-  color: var(--text);
-  border: 1px solid var(--border);
-  padding: 8px 11px;
-  border-radius: 7px;
-}
-.btn {
-  display: inline-block;
-  padding: 11px 17px;
-  background: var(--primary);
-  color: #fff;
-  border: 1px solid var(--primary);
-  border-radius: 7px;
-  font-weight: 700;
-  font-size: 12px;
-  text-align: center;
-}
-body.dark .btn { color: #10281a; }
-.btn.secondary { background: transparent; color: var(--primary); }
-.btn.small { padding: 8px 11px; }
-
-.hero {
-  background: linear-gradient(120deg, #123327, #246445);
-  color: #fff;
-  overflow: hidden;
-}
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  gap: 35px;
-  align-items: center;
-  padding: 76px 0;
-}
-.eyebrow {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: #b9dfa9;
-}
-.hero h1 {
-  font-size: clamp(38px, 5.2vw, 65px);
-  letter-spacing: -2px;
-  line-height: 1.08;
-  margin: 18px 0;
-}
-.hero p { color: #d7e6db; font-size: 15px; max-width: 610px; }
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
-.hero .btn { background: #b6d99b; border-color: #b6d99b; color: #183b29; }
-.hero .btn.secondary { background: transparent; border-color: #8eae98; color: #fff; }
-.hero-art {
-  min-height: 310px;
-  display: grid;
-  place-items: center;
-  position: relative;
-}
-.orbit {
-  width: 245px;
-  height: 245px;
-  border: 1px solid #82ae8e;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  position: relative;
-}
-.orbit::before, .orbit::after {
-  content: "";
-  position: absolute;
-  border: 1px solid #638e72;
-  border-radius: 50%;
-}
-.orbit::before { inset: 22px; }
-.orbit::after { inset: 48px; }
-.plant-symbol { font-size: 88px; z-index: 1; }
-.float-card {
-  position: absolute;
-  background: #fff;
-  color: #234332;
-  border-radius: 9px;
-  padding: 12px 15px;
-  font-size: 11px;
-  box-shadow: var(--shadow);
-}
-.float-card strong { display: block; font-size: 16px; }
-.float-one { left: 0; top: 30px; }
-.float-two { right: 0; bottom: 35px; }
-
-.stats { background: var(--surface); border-bottom: 1px solid var(--border); }
-.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 25px 0; }
-.stat strong { display: block; font-size: 26px; color: var(--primary); }
-.stat span { font-size: 11px; color: var(--muted); }
-
-section { padding: 70px 0; }
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 25px;
-  margin-bottom: 30px;
-}
-.kicker {
-  color: var(--primary);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-.section-head h2 { margin: 8px 0; font-size: clamp(25px, 3vw, 34px); line-height: 1.2; letter-spacing: -.8px; }
-.section-head p { max-width: 540px; color: var(--muted); font-size: 13px; margin: 0; }
-
-.grid { display: grid; gap: 20px; }
-.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 23px;
-  box-shadow: var(--shadow);
-  min-width: 0;
-}
-.card h3 { font-size: 18px; margin: 10px 0; }
-.card p { font-size: 12px; color: var(--muted); }
-.icon {
-  width: 47px;
-  height: 47px;
-  display: grid;
-  place-items: center;
-  background: var(--soft);
-  border-radius: 11px;
-  font-size: 23px;
-}
-.tag {
-  display: inline-block;
-  padding: 4px 8px;
-  margin: 2px 3px 2px 0;
-  background: var(--soft);
-  color: var(--primary);
-  border-radius: 4px;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .3px;
-}
-
-.soft-section { background: var(--soft); }
-.toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 22px; }
-.toolbar input, .toolbar select {
-  min-width: 0;
-  padding: 11px 13px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  color: var(--text);
-}
-.toolbar input { flex: 1; min-width: 200px; }
-.plant-card { padding: 0; overflow: hidden; }
-.plant-art {
-  height: 135px;
-  display: grid;
-  place-items: center;
-  font-size: 65px;
-  background: linear-gradient(135deg, #dcebd5, #aac99d);
-}
-.plant-body { padding: 21px; }
-.plant-body h3 { margin: 9px 0 0; }
-.plant-body em { color: var(--muted); font-size: 11px; }
-.plant-body p { min-height: 58px; }
-.plant-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  border-top: 1px solid var(--border);
-  padding-top: 12px;
-  margin-top: 13px;
-  font-size: 10px;
-  color: var(--muted);
-}
-.empty { display: none; padding: 28px; text-align: center; color: var(--muted); }
-
-.timeline { padding-left: 30px; position: relative; }
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 7px;
-  bottom: 12px;
-  width: 2px;
-  background: var(--border);
-}
-.step { position: relative; padding-bottom: 23px; }
-.step:last-child { padding-bottom: 0; }
-.step::before {
-  content: "";
-  position: absolute;
-  left: -28px;
-  top: 6px;
-  width: 10px;
-  height: 10px;
-  border: 2px solid var(--primary);
-  border-radius: 50%;
-  background: var(--surface);
-}
-.step h3 { margin: 0 0 5px; font-size: 15px; }
-.step p { margin: 0; }
-.bar-row {
-  display: grid;
-  grid-template-columns: 112px 1fr;
-  gap: 10px;
-  align-items: center;
-  margin: 17px 0;
-  font-size: 11px;
-}
-.bar-bg { height: 9px; border-radius: 20px; overflow: hidden; background: var(--soft); }
-.bar-fill { height: 100%; background: var(--primary); border-radius: 20px; }
-.callout {
-  padding: 19px;
-  margin-top: 20px;
-  border-left: 4px solid var(--primary);
-  background: var(--soft);
-  border-radius: 5px;
-  font-size: 12px;
-}
-.table-wrap { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 690px; }
-th, td { padding: 13px 12px; text-align: left; border-bottom: 1px solid var(--border); }
-th { background: var(--soft); color: var(--primary); text-transform: uppercase; font-size: 10px; }
-td { color: var(--muted); }
-td strong { color: var(--text); }
-
-.article { min-height: 255px; display: flex; flex-direction: column; }
-.article .date { color: var(--primary); font-size: 10px; font-weight: 800; letter-spacing: 1px; }
-.article h3 { font-size: 17px; }
-.article .read { color: var(--primary); font-size: 11px; font-weight: 800; margin-top: auto; }
-.chart { display: block; width: 100%; height: auto; }
-.newsletter {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
-  background: linear-gradient(120deg, #173e2c, #2d754d);
-  color: #fff;
-  padding: 38px;
-  border-radius: 15px;
-}
-.newsletter p { color: #d4e5d8; font-size: 12px; }
-.newsletter form { width: min(350px, 100%); }
-.newsletter label { display: block; font-size: 11px; margin: 10px 0 5px; }
-.newsletter input, .newsletter select {
-  width: 100%;
-  padding: 11px;
-  border: 1px solid #dce8de;
-  border-radius: 6px;
-  background: #fff;
-  color: #20352a;
-}
-.newsletter .btn { width: 100%; margin-top: 14px; background: #b8dc9d; color: #183b29; border-color: #b8dc9d; }
-#formMessage { min-height: 20px; }
-footer { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 0; color: var(--muted); font-size: 11px; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 30px; }
-footer h3 { color: var(--text); font-size: 14px; }
-footer a { display: block; margin: 8px 0; }
-#topBtn {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 80;
-  display: none;
-  width: 44px;
-  height: 44px;
-  border: 0;
-  border-radius: 50%;
-  color: white;
-  background: var(--primary);
-  font-size: 20px;
-}
-body.dark #topBtn { color: #10281a; }
-
-@media (max-width: 850px) {
-  .nav-right { gap: 10px; }
-  .menu-btn { display: inline-block; }
-  .navlinks {
-    display: none;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 76px;
-    padding: 18px 4%;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-  }
-  .navlinks.open { display: flex; }
-  .navlinks a { display: block !important; padding: 11px 0; }
-  .hero-grid { grid-template-columns: 1fr; padding: 55px 0; }
-  .hero-art { min-height: 265px; }
-  .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .stat-grid { grid-template-columns: repeat(2, 1fr); }
-  .section-head { align-items: flex-start; flex-direction: column; }
-  .newsletter { flex-direction: column; align-items: flex-start; padding: 28px; }
-  .newsletter form { width: 100%; }
-}
-@media (max-width: 540px) {
-  .grid-3, .grid-2 { grid-template-columns: 1fr; }
-  section { padding: 48px 0; }
-  .hero h1 { letter-spacing: -1px; }
-  .hero-art { min-height: 240px; }
-  .orbit { width: 205px; height: 205px; }
-  .plant-symbol { font-size: 70px; }
-  .float-card { padding: 9px 11px; font-size: 10px; }
-  .float-card strong { font-size: 13px; }
-  .float-one { left: 0; top: 15px; }
-  .float-two { right: 0; bottom: 20px; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .card { padding: 19px; }
-  .plant-card { padding: 0; }
-  .bar-row { grid-template-columns: 100px 1fr; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { transition: none !important; }
-}
-</style>
+        .foot_marker a:hover {
+            color: #4388e0;
+        }        
+    </style>
 </head>
-
 <body>
-<header>
-  <div class="container nav">
-    <a href="#home" class="logo">
-      NATURA
-      <small>NATURAL PRODUCTS SCIENCE</small>
-    </a>
-    <div class="nav-right">
-      <nav class="navlinks" id="navlinks" aria-label="Main navigation">
-        <a href="#research">Research</a>
-        <a href="#plants">Plant Library</a>
-        <a href="#methods">Methods</a>
-        <a href="#compounds">Compounds</a>
-        <a href="#publications">Literature</a>
-      </nav>
-      <button class="btn small" id="themeBtn" type="button">◐ Theme</button>
-      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="navlinks">☰ Menu</button>
+    <div class="search-container">
+        <form action="https://www.google.com/search" method="get" target="_blank">
+            <input class="search-box" type="text" name="q" placeholder="Google 搜索...">
+        </form>
     </div>
-  </div>
-</header>
-
-<main>
-<section class="hero" id="home" style="padding:0">
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow">Science · Nature · Innovation</div>
-      <h1>Unlocking Nature's Molecular Intelligence</h1>
-      <p>Explore the chemistry of medicinal plants, microorganisms, marine organisms, and other biological resources. Discover how natural molecules are investigated through analytical chemistry, pharmacology, biotechnology, and computational science.</p>
-      <div class="hero-actions">
-        <a class="btn" href="#plants">Explore Plant Library ↗</a>
-        <a class="btn secondary" href="#methods">Research Methods</a>
-      </div>
-      <p style="font-size:10px;margin-top:24px;letter-spacing:1px">PHYTOCHEMISTRY · BIOACTIVE COMPOUNDS · DRUG DISCOVERY</p>
-    </div>
-    <div class="hero-art" aria-label="Decorative botanical illustration">
-      <div class="orbit"><div class="plant-symbol">🌿</div></div>
-      <div class="float-card float-one"><strong>Explore</strong>Natural diversity</div>
-      <div class="float-card float-two"><strong>Investigate</strong>Molecular evidence</div>
-    </div>
-  </div>
-</section>
-
-<div class="stats">
-  <div class="container stat-grid">
-    <div class="stat"><strong>01</strong><span>Resource identification</span></div>
-    <div class="stat"><strong>02</strong><span>Chemical characterization</span></div>
-    <div class="stat"><strong>03</strong><span>Biological evaluation</span></div>
-    <div class="stat"><strong>04</strong><span>Evidence-based development</span></div>
-  </div>
-</div>
-
-<section id="research">
-  <div class="container">
-    <div class="section-head">
-      <div><div class="kicker">Research portfolio</div><h2>Where Natural Science Meets Discovery</h2></div>
-      <p>Natural products research connects biodiversity, analytical chemistry, molecular biology, pharmacology, and modern computational science.</p>
-    </div>
-    <div class="grid grid-3">
-      <article class="card">
-        <div class="icon">🧪</div><h3>Phytochemistry</h3>
-        <p>Investigate plant metabolites, extraction behavior, chemical structures, and the relationship between molecular composition and biological activity.</p>
-        <span class="tag">HPLC</span><span class="tag">LC-MS</span><span class="tag">NMR</span>
-      </article>
-      <article class="card">
-        <div class="icon">🧬</div><h3>Natural Product Pharmacology</h3>
-        <p>Study potential biological mechanisms, cellular responses, target interactions, dose-response relationships, and preliminary safety profiles.</p>
-        <span class="tag">Bioassays</span><span class="tag">Mechanisms</span>
-      </article>
-      <article class="card">
-        <div class="icon">💻</div><h3>Computational Discovery</h3>
-        <p>Use cheminformatics, molecular networking, databases, and computational models to prioritize candidates for laboratory validation.</p>
-        <span class="tag">Cheminformatics</span><span class="tag">AI Research</span>
-      </article>
-      <article class="card">
-        <div class="icon">🌊</div><h3>Marine Natural Products</h3>
-        <p>Explore structurally diverse metabolites produced by marine microorganisms, algae, sponges, and other marine organisms.</p>
-        <span class="tag">Marine Biology</span><span class="tag">Metabolomics</span>
-      </article>
-      <article class="card">
-        <div class="icon">🦠</div><h3>Microbial Metabolites</h3>
-        <p>Investigate bacterial and fungal secondary metabolites, biosynthetic gene clusters, fermentation, and natural chemical diversity.</p>
-        <span class="tag">Fermentation</span><span class="tag">Biosynthesis</span>
-      </article>
-      <article class="card">
-        <div class="icon">♻️</div><h3>Sustainable Biotechnology</h3>
-        <p>Develop responsible approaches to sourcing, cultivation, extraction, process optimization, and conservation of natural resources.</p>
-        <span class="tag">Green Chemistry</span><span class="tag">Sustainability</span>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="plants" class="soft-section">
-  <div class="container">
-    <div class="section-head">
-      <div><div class="kicker">Reference collection</div><h2>Medicinal Plant Explorer</h2></div>
-      <p>Search illustrative profiles of medicinal plants and their characteristic chemical constituents. Botanical identification should be independently verified.</p>
-    </div>
-    <div class="toolbar">
-      <input id="plantSearch" type="search" placeholder="Search plant, compound, or topic..." aria-label="Search plant database">
-      <select id="plantFilter" aria-label="Filter plants by chemical class">
-        <option value="all">All categories</option>
-        <option value="terpenoid">Terpenoids</option>
-        <option value="polyphenol">Polyphenols</option>
-        <option value="alkaloid">Alkaloids</option>
-        <option value="glycoside">Glycosides</option>
-      </select>
-    </div>
-
-    <div class="grid grid-3" id="plantGrid">
-      <article class="card plant-card" data-category="terpenoid" data-search="ginseng panax ginsenosides saponins root">
-        <div class="plant-art">🌱</div><div class="plant-body">
-          <span class="tag">TERPENOIDS</span><h3>Asian Ginseng</h3><em>Panax ginseng C.A.Mey.</em>
-          <p>Research focus: ginsenosides, triterpene saponins, chemical variation, and pharmacological mechanisms.</p>
-          <div class="plant-meta"><span>Araliaceae</span><span>Root</span></div>
+    
+    <div class="container">
+        <!-- 第一行 -->
+        <div class="link-item">
+            <a href="https://www.google.com" target="_blank">
+                <img class="link-icon" src="https://www.google.com/favicon.ico" alt="Google">
+                <span class="link-text">Google</span>
+            </a>
         </div>
-      </article>
-      <article class="card plant-card" data-category="polyphenol" data-search="green tea camellia sinensis catechins epigallocatechin gallate">
-        <div class="plant-art">🍃</div><div class="plant-body">
-          <span class="tag">POLYPHENOLS</span><h3>Green Tea</h3><em>Camellia sinensis (L.) Kuntze</em>
-          <p>Research focus: catechins, epigallocatechin gallate, oxidation, and metabolic transformations.</p>
-          <div class="plant-meta"><span>Theaceae</span><span>Leaves</span></div>
+        <div class="link-item">
+            <a href="https://www.baidu.com" target="_blank">
+                <img class="link-icon" src="https://www.baidu.com/favicon.ico" alt="Baidu">
+                <span class="link-text">Baidu</span>
+            </a>
         </div>
-      </article>
-      <article class="card plant-card" data-category="alkaloid" data-search="coptis chinensis goldthread berberine isoquinoline alkaloids">
-        <div class="plant-art">🌿</div><div class="plant-body">
-          <span class="tag">ALKALOIDS</span><h3>Chinese Goldthread</h3><em>Coptis chinensis Franch.</em>
-          <p>Research focus: isoquinoline alkaloids, including berberine, analytical quality, and bioactivity.</p>
-          <div class="plant-meta"><span>Ranunculaceae</span><span>Rhizome</span></div>
+        <div class="link-item">
+            <a href="https://www.youtube.com" target="_blank">
+                <img class="link-icon" src="https://www.youtube.com/favicon.ico" alt="YouTube">
+                <span class="link-text">Youtube</span>
+            </a>
         </div>
-      </article>
-      <article class="card plant-card" data-category="polyphenol" data-search="turmeric curcuma longa curcumin diarylheptanoid">
-        <div class="plant-art">🌼</div><div class="plant-body">
-          <span class="tag">POLYPHENOLS</span><h3>Turmeric</h3><em>Curcuma longa L.</em>
-          <p>Research focus: curcuminoids, chemical stability, bioavailability, and formulation science.</p>
-          <div class="plant-meta"><span>Zingiberaceae</span><span>Rhizome</span></div>
+        <div class="link-item">
+            <a href="https://mail.google.com/mail/u/0/" target="_blank">
+                <img class="link-icon" src="https://mail.google.com/favicon.ico" alt="Gmail">
+                <span class="link-text">Gmail</span>
+            </a>
         </div>
-      </article>
-      <article class="card plant-card" data-category="glycoside" data-search="licorice glycyrrhiza uralensis glycyrrhizin saponins flavonoids">
-        <div class="plant-art">🌾</div><div class="plant-body">
-          <span class="tag">GLYCOSIDES</span><h3>Licorice</h3><em>Glycyrrhiza uralensis Fisch.</em>
-          <p>Research focus: glycyrrhizin, flavonoids, saponins, species authentication, and quality markers.</p>
-          <div class="plant-meta"><span>Fabaceae</span><span>Root</span></div>
+        <div class="link-item">
+            <a href="https://github.com" target="_blank">
+                <img class="link-icon" src="https://github.com/favicon.ico" alt="GitHub">
+                <span class="link-text">GitHub</span>
+            </a>
         </div>
-      </article>
-      <article class="card plant-card" data-category="terpenoid" data-search="artemisia annua sweet wormwood artemisinin sesquiterpene lactone">
-        <div class="plant-art">🌿</div><div class="plant-body">
-          <span class="tag">TERPENOIDS</span><h3>Sweet Wormwood</h3><em>Artemisia annua L.</em>
-          <p>Research focus: artemisinin, sesquiterpene lactones, biosynthesis, and cultivation variables.</p>
-          <div class="plant-meta"><span>Asteraceae</span><span>Aerial parts</span></div>
+        <div class="link-item">
+            <a href="https://ip.sb" target="_blank">
+                <img class="link-icon" src="https://ip.sb/favicon.ico" alt="IP SB">
+                <span class="link-text">ip.sb</span>
+            </a>
         </div>
-      </article>
-      <article class="card plant-card" data-category="polyphenol" data-search="grape vitis vinifera resveratrol anthocyanins stilbenes">
-        <div class="plant-art">🍇</div><div class="plant-body">
-          <span class="tag">POLYPHENOLS</span><h3>Grape</h3><em>Vitis vinifera L.</em>
-          <p>Research focus: resveratrol, anthocyanins, stilbenes, and processing-related changes.</p>
-          <div class="plant-meta"><span>Vitaceae</span><span>Fruit / skin</span></div>
+        
+        <!-- 第二行 -->
+        <div class="link-item">
+            <a href="https://dash.cloudflare.com" target="_blank">
+                <img class="link-icon" src="https://www.cloudflare.com/favicon.ico" alt="Cloudflare">
+                <span class="link-text">Cloudflare</span>
+            </a>
         </div>
-      </article>
-      <article class="card plant-card" data-category="alkaloid" data-search="camptotheca acuminata camptothecin alkaloid">
-        <div class="plant-art">🌳</div><div class="plant-body">
-          <span class="tag">ALKALOIDS</span><h3>Camptotheca</h3><em>Camptotheca acuminata Decne.</em>
-          <p>Research focus: camptothecin-related alkaloids, biosynthesis, and natural-product-derived drug leads.</p>
-          <div class="plant-meta"><span>Nyssaceae</span><span>Multiple tissues</span></div>
+        <div class="link-item">
+            <a href="https://chat.openai.com" target="_blank">
+                <img class="link-icon" src="https://chat.openai.com/favicon.ico" alt="ChatGPT">
+                <span class="link-text">Chatgpt</span>
+            </a>
         </div>
-      </article>
-      <article class="card plant-card" data-category="glycoside" data-search="salvia miltiorrhiza danshen tanshinones salvianolic acids">
-        <div class="plant-art">🌺</div><div class="plant-body">
-          <span class="tag">MIXED METABOLITES</span><h3>Danshen</h3><em>Salvia miltiorrhiza Bunge</em>
-          <p>Research focus: tanshinones, salvianolic acids, chemical fingerprinting, and batch consistency.</p>
-          <div class="plant-meta"><span>Lamiaceae</span><span>Root</span></div>
+        <div class="link-item">
+            <a href="https://huggingface.co" target="_blank">
+                <img class="link-icon" src="https://huggingface.co/favicon.ico" alt="Hugging Face">
+                <span class="link-text">Huggingface</span>
+            </a>
         </div>
-      </article>
-    </div>
-    <div id="emptyPlants" class="empty" role="status">No matching plants found. Try another keyword or category.</div>
-    <p style="font-size:10px;color:var(--muted);margin-top:18px">This is an educational reference collection, not a validated clinical database. Traditional use does not establish clinical efficacy.</p>
-  </div>
-</section>
-
-<section id="methods">
-  <div class="container">
-    <div class="section-head">
-      <div><div class="kicker">Research workflow</div><h2>From Biological Resource to Evidence</h2></div>
-      <p>A reproducible workflow connects sample provenance, chemical identity, experimental observations, and independently verifiable conclusions.</p>
-    </div>
-    <div class="grid grid-2">
-      <div class="card">
-        <div class="timeline">
-          <div class="step"><h3>01 · Resource Identification</h3><p>Document taxonomy, origin, collection conditions, voucher specimens, permits, and biodiversity requirements.</p></div>
-          <div class="step"><h3>02 · Sample Preparation</h3><p>Define drying, storage, particle size, extraction conditions, and sample traceability.</p></div>
-          <div class="step"><h3>03 · Chemical Profiling</h3><p>Apply chromatographic separation, mass spectrometry, spectroscopy, and complementary analytical techniques.</p></div>
-          <div class="step"><h3>04 · Compound Isolation</h3><p>Separate candidate compounds and evaluate purity, identity, and molecular structure.</p></div>
-          <div class="step"><h3>05 · Biological Evaluation</h3><p>Use suitable controls, validated assays, concentration-response experiments, replication, and safety assessments.</p></div>
-          <div class="step"><h3>06 · Validation & Translation</h3><p>Confirm results independently and investigate mechanism, exposure, reproducibility, and development requirements.</p></div>
+        <div class="link-item">
+            <a href="https://www.itdog.cn" target="_blank">
+                <i class="fas fa-network-wired link-icon"></i>
+                <span class="link-text">ITDOG - 在线ping</span>
+            </a>
         </div>
-      </div>
-      <div>
-        <div class="card">
-          <div class="kicker">Analytical toolbox</div>
-          <h3>Complementary Technologies</h3>
-          <div class="bar-row"><span>HPLC / UHPLC</span><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></div>
-          <div class="bar-row"><span>LC-MS/MS</span><div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div></div>
-          <div class="bar-row"><span>NMR</span><div class="bar-bg"><div class="bar-fill" style="width:78%"></div></div></div>
-          <div class="bar-row"><span>GC-MS</span><div class="bar-bg"><div class="bar-fill" style="width:72%"></div></div></div>
-          <div class="bar-row"><span>DNA Barcoding</span><div class="bar-bg"><div class="bar-fill" style="width:66%"></div></div></div>
-          <p style="font-size:10px">Illustrative bar lengths only; these are not measured performance scores or rankings.</p>
+        <div class="link-item">
+            <a href="https://ping0.cc" target="_blank">
+                <i class="fas fa-database link-icon"></i>
+                <span class="link-text">Ping0</span>
+            </a>
         </div>
-        <div class="callout"><strong>Reproducibility matters.</strong><br>Document sample provenance, reference standards, instrument settings, extraction yield, batch information, analytical uncertainty, and data-processing decisions.</div>
-      </div>
+        <div class="link-item">
+            <a href="#" target="_blank">
+                <i class="fas fa-fingerprint link-icon"></i>
+                <span class="link-text">浏览器指纹</span>
+            </a>
+        </div>
+        
+        <!-- 第三行 -->
+        <div class="link-item">
+            <a href="https://ssss.nyc.mn" target="_blank">
+                <i class="fas fa-tachometer-alt link-icon"></i>
+                <span class="link-text">nezha面板</span>
+            </a>
+        </div>
+        <div class="link-item">
+            <a href="https://hoppscotch.io" target="_blank">
+                <img class="link-icon" src="https://discord.com/favicon.ico" alt="Discord">
+                <span class="link-text">Api测试</span>
+            </a>
+        </div>
+        <div class="link-item">
+            <a href="https://who.cx" target="_blank">
+                <i class="fas fa-globe link-icon"></i>
+                <span class="link-text">who.cx</span>
+            </a>
+        </div>
+        <div class="link-item">
+            <a href="https://www.domcomp.com" target="_blank">
+                <i class="fas fa-tags link-icon"></i>
+                <span class="link-text">域名比价</span>
+            </a>
+        </div>
+        
+        <div class="link-item">
+            <a href="https://www.nodeseek.com" target="_blank">
+                <i class="fas fa-server link-icon"></i>
+                <span class="link-text">NodeSeek</span>
+            </a>
+        </div>
+        <div class="link-item">
+            <a href="https://linux.do" target="_blank">
+                <i class="fab fa-linux link-icon"></i>
+                <span class="link-text">Linux do</span>
+            </a>
+        </div>
+        
+        <!-- 第四行 -->
+        <div class="link-item">
+            <a href="https://music.gvrander.eu.org" target="_blank">
+                <i class="fab fa-linux link-icon"></i>
+                <span class="link-text">在线音乐</span>
+            </a>           
+        </div>
+        <div class="link-item">
+            <a href="https://www.freereceivesms.com" target="_blank">
+                <i class="fab fa-linux link-icon"></i>
+                <span class="link-text">免费接码</span>
+            </a> 
+        </div>
+        <div class="link-item">
+            <a href="https://sublink.eooce.com" target="_blank">
+                <i class="fab fa-linux link-icon"></i>
+                <span class="link-text">订阅转换</span>
+            </a> 
+        </div>
+        <div class="link-item">
+            <a href="https://ssh.eooce.com" target="_blank">
+                <i class="fab fa-linux link-icon"></i>
+                <span class="link-text">webssh</span>
+            </a> 
+        </div>
+        <div class="link-item">
+            <a href="https://filebox.nnuu.nyc.mn" target="_blank">
+                <i class="fab fa-linux link-icon"></i>
+                <span class="link-text">文件快递柜</span>
+            </a> 
+        </div>
+        <div class="link-item">
+            <a href="https://address.nnuu.nyc.mn" target="_blank">
+                <i class="fab fa-linux link-icon"></i>
+                <span class="link-text">真实地址生成</span>
+            </a> 
+        </div>
+
+        <!-- 版权 -->
+        <div class="foot_marker">
+        <a href="https://github.com/eooce" target="_blank">Powered by eooce</a>
     </div>
-  </div>
-</section>
 
-<section id="data" class="soft-section">
-  <div class="container">
-    <div class="section-head">
-      <div><div class="kicker">Research intelligence</div><h2>Understanding Chemical Diversity</h2></div>
-      <p>Natural products span many chemical families. Classification can guide analytical design and hypothesis generation, but no single diagram captures the full diversity of nature.</p>
-    </div>
-    <div class="grid grid-2">
-      <div class="card">
-        <h3>Representative Compound Families</h3>
-        <p>Conceptual illustration, not a quantitative survey of known natural products.</p>
-        <svg class="chart" viewBox="0 0 460 280" role="img" aria-label="Illustrative natural compound classes, not quantitative data">
-          <circle cx="125" cy="130" r="78" fill="none" stroke="var(--border)" stroke-width="30"/>
-          <circle cx="125" cy="130" r="78" fill="none" stroke="#246c4b" stroke-width="30" stroke-dasharray="120 370" transform="rotate(-90 125 130)"/>
-          <circle cx="125" cy="130" r="78" fill="none" stroke="#7eaa69" stroke-width="30" stroke-dasharray="95 395" stroke-dashoffset="-120" transform="rotate(-90 125 130)"/>
-          <circle cx="125" cy="130" r="78" fill="none" stroke="#d2a65b" stroke-width="30" stroke-dasharray="80 410" stroke-dashoffset="-215" transform="rotate(-90 125 130)"/>
-          <circle cx="125" cy="130" r="78" fill="none" stroke="#83b7ae" stroke-width="30" stroke-dasharray="95 395" stroke-dashoffset="-295" transform="rotate(-90 125 130)"/>
-          <g fill="var(--text)" font-size="12">
-            <rect x="245" y="70" width="11" height="11" rx="2" fill="#246c4b"/><text x="265" y="80">Terpenoids</text>
-            <rect x="245" y="105" width="11" height="11" rx="2" fill="#7eaa69"/><text x="265" y="115">Phenolics</text>
-            <rect x="245" y="140" width="11" height="11" rx="2" fill="#d2a65b"/><text x="265" y="150">Alkaloids</text>
-            <rect x="245" y="175" width="11" height="11" rx="2" fill="#83b7ae"/><text x="265" y="185">Other classes</text>
-            <text x="125" y="125" text-anchor="middle" font-weight="bold">Natural</text>
-            <text x="125" y="145" text-anchor="middle" font-weight="bold">Products</text>
-          </g>
-        </svg>
-        <p style="font-size:10px">The segment sizes are decorative and do not represent actual abundance or percentages.</p>
-      </div>
-      <div class="card">
-        <h3>Key Research Considerations</h3>
-        <p>Qualitative reminders for assessing natural-product research candidates.</p>
-        <div class="bar-row"><span>Identity</span><div class="bar-bg"><div class="bar-fill" style="width:95%"></div></div></div>
-        <div class="bar-row"><span>Purity</span><div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div></div>
-        <div class="bar-row"><span>Reproducibility</span><div class="bar-bg"><div class="bar-fill" style="width:92%"></div></div></div>
-        <div class="bar-row"><span>Safety</span><div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div></div>
-        <div class="bar-row"><span>Clinical evidence</span><div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div></div>
-        <div class="callout">These are illustrative design elements, not scientific scores. Actual evaluations require documented criteria and supporting data.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="compounds">
-  <div class="container">
-    <div class="section-head">
-      <div><div class="kicker">Chemical reference</div><h2>Selected Natural Bioactive Compounds</h2></div>
-      <p>Examples illustrating the structural diversity and scientific relevance of natural products.</p>
-    </div>
-    <div class="card table-wrap">
-      <table>
-        <thead><tr><th>Compound</th><th>Natural source</th><th>Chemical class</th><th>Research focus</th><th>Consideration</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Artemisinin</strong></td><td>Artemisia annua</td><td>Sesquiterpene lactone</td><td>Antimalarial drug discovery</td><td>Resistance monitoring</td></tr>
-          <tr><td><strong>Paclitaxel</strong></td><td>Taxus species</td><td>Taxane diterpenoid</td><td>Microtubule stabilization</td><td>Clinically significant toxicity</td></tr>
-          <tr><td><strong>Quinine</strong></td><td>Cinchona species</td><td>Quinoline alkaloid</td><td>Antimalarial pharmacology</td><td>Medical supervision</td></tr>
-          <tr><td><strong>Curcumin</strong></td><td>Curcuma longa</td><td>Diarylheptanoid</td><td>Cell signaling and formulation</td><td>Bioavailability limitations</td></tr>
-          <tr><td><strong>Resveratrol</strong></td><td>Grapes and other plants</td><td>Stilbenoid</td><td>Cell signaling and metabolism</td><td>Clinical evidence limitations</td></tr>
-          <tr><td><strong>Berberine</strong></td><td>Coptis and Berberis species</td><td>Isoquinoline alkaloid</td><td>Metabolic pathways</td><td>Interactions and safety</td></tr>
-          <tr><td><strong>Digoxin</strong></td><td>Digitalis species</td><td>Cardiac glycoside</td><td>Cardiac pharmacology</td><td>Narrow therapeutic index</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="callout"><strong>Scientific note:</strong> Natural origin does not imply safety. Isolated compounds, concentrated extracts, and traditional preparations can have different risks, exposures, and pharmacological properties.</div>
-  </div>
-</section>
-
-<section id="publications" class="soft-section">
-  <div class="container">
-    <div class="section-head">
-      <div><div class="kicker">Knowledge center</div><h2>Research Themes & Literature</h2></div>
-      <p>Use these trusted scientific resources to locate publications and verify claims. The themes below are suggested search directions, not individual paper citations.</p>
-    </div>
-    <div class="grid grid-3">
-      <article class="card article"><span class="date">ANALYTICAL CHEMISTRY</span><h3>Metabolomics and Chemical Fingerprinting</h3><p>Explore untargeted metabolomics, quality control, chemometrics, and analytical reproducibility.</p><a class="read" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">Search PubMed ↗</a></article>
-      <article class="card article"><span class="date">DRUG DISCOVERY</span><h3>From Natural Leads to Medicines</h3><p>Study lead identification, mechanism validation, pharmacokinetics, toxicity, and translational development.</p><a class="read" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">Explore Literature ↗</a></article>
-      <article class="card article"><span class="date">BIOINFORMATICS</span><h3>AI-Assisted Natural Product Discovery</h3><p>Investigate molecular representations, structure prediction, databases, and experimental validation.</p><a class="read" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">Find Studies ↗</a></article>
-      <article class="card article"><span class="date">BIODIVERSITY</span><h3>Conservation and Sustainable Bioprospecting</h3><p>Examine biodiversity protection, benefit sharing, sourcing documentation, and sustainable cultivation.</p><a class="read" href="https://www.cbd.int/" target="_blank" rel="noopener noreferrer">Convention on Biological Diversity ↗</a></article>
-      <article class="card article"><span class="date">OPEN SCIENCE</span><h3>Reproducible Methods and Data Sharing</h3><p>Review experimental design, metadata standards, reference materials, and transparent reporting.</p><a class="read" href="https://www.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">NCBI Resources ↗</a></article>
-      <article class="card article"><span class="date">CHEMICAL DATABASES</span><h3>Exploring Structures and Annotations</h3><p>Investigate molecular identifiers, chemical structures, and linked scientific publications.</p><a class="read" href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">Open PubChem ↗</a></article>
-    </div>
-  </div>
-</section>
-
-<section id="ethics">
-  <div class="container">
-    <div class="section-head">
-      <div><div class="kicker">Responsible research</div><h2>Ethics, Safety & Scientific Integrity</h2></div>
-    </div>
-    <div class="grid grid-3">
-      <article class="card"><div class="icon">🔬</div><h3>Experimental Rigor</h3><p>Use suitable controls, validated analytical methods, adequate replication, and statistical analysis planned before data collection.</p></article>
-      <article class="card"><div class="icon">🛡️</div><h3>Safety Evaluation</h3><p>Evaluate toxicity, dose-response relationships, contamination, contraindications, and interactions before considering human applications.</p></article>
-      <article class="card"><div class="icon">🌍</div><h3>Ethical Sourcing</h3><p>Respect biodiversity regulations, access and benefit-sharing obligations, traditional knowledge rights, and sustainable harvesting practices.</p></article>
-    </div>
-    <div class="callout"><strong>Evidence hierarchy:</strong> Traditional use, laboratory experiments, animal studies, and human clinical trials provide different types of evidence. Findings at one level should not automatically be treated as proof at another.</div>
-  </div>
-</section>
-
-<section id="research-note">
-  <div class="container">
-    <div class="newsletter">
-      <div>
-        <div class="eyebrow">Research workspace</div>
-        <h2 style="margin:10px 0">Create a Research Note</h2>
-        <p>Select a topic and generate a plain-text research note locally in your browser. This demonstration does not send emails or upload data.</p>
-      </div>
-      <form id="researchForm">
-        <label for="email">Email (optional; not transmitted)</label>
-        <input id="email" type="email" placeholder="researcher@example.com" autocomplete="email">
-        <label for="topic">Research interest</label>
-        <select id="topic">
-          <option>Phytochemistry</option>
-          <option>Natural product pharmacology</option>
-          <option>Medicinal plant quality control</option>
-          <option>AI-assisted drug discovery</option>
-          <option>Sustainable biotechnology</option>
-          <option>Marine natural products</option>
-        </select>
-        <button class="btn" type="submit">Download Research Note</button>
-        <p id="formMessage" aria-live="polite"></p>
-      </form>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container footer-grid">
-    <div>
-      <a href="#home" class="logo">NATURA<small>NATURAL PRODUCTS RESEARCH PORTAL</small></a>
-      <p>An educational website concept dedicated to natural-product chemistry, medicinal plant research, and responsible scientific discovery.</p>
-      <p>© <span id="year"></span> Natura Research Portal · Educational demonstration</p>
-    </div>
-    <div><h3>Explore</h3><a href="#research">Research Areas</a><a href="#plants">Plant Library</a><a href="#methods">Research Methods</a><a href="#compounds">Compound Reference</a></div>
-    <div><h3>Scientific Resources</h3><a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">PubMed</a><a href="https://pubchem.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">PubChem</a><a href="https://www.ncbi.nlm.nih.gov/" target="_blank" rel="noopener noreferrer">NCBI</a><a href="https://www.cbd.int/" target="_blank" rel="noopener noreferrer">CBD</a></div>
-  </div>
-</footer>
-
-<button id="topBtn" type="button" aria-label="Back to top" title="Back to top">↑</button>
-
-<script>
-'use strict';
-
-/* Theme switch */
-const themeBtn = document.getElementById('themeBtn');
-
-themeBtn.addEventListener('click', function () {
-  const isDark = document.body.classList.toggle('dark');
-  themeBtn.textContent = isDark ? '☀ Light' : '◐ Theme';
-});
-
-/* Responsive navigation */
-const menuBtn = document.getElementById('menuBtn');
-const navlinks = document.getElementById('navlinks');
-
-menuBtn.addEventListener('click', function () {
-  const isOpen = navlinks.classList.toggle('open');
-  menuBtn.setAttribute('aria-expanded', String(isOpen));
-  menuBtn.textContent = isOpen ? '✕ Close' : '☰ Menu';
-});
-
-navlinks.querySelectorAll('a').forEach(function (link) {
-  link.addEventListener('click', function () {
-    navlinks.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-    menuBtn.textContent = '☰ Menu';
-  });
-});
-
-/* Plant search and category filtering */
-const searchInput = document.getElementById('plantSearch');
-const filterSelect = document.getElementById('plantFilter');
-const plantCards = Array.from(document.querySelectorAll('.plant-card'));
-const emptyPlants = document.getElementById('emptyPlants');
-
-function filterPlants() {
-  const query = searchInput.value.trim().toLowerCase();
-  const category = filterSelect.value;
-  let visibleCount = 0;
-
-  plantCards.forEach(function (card) {
-    const searchableText =
-      (card.dataset.search + ' ' + card.textContent).toLowerCase();
-
-    const matchesText = searchableText.includes(query);
-    const matchesCategory =
-      category === 'all' || card.dataset.category === category;
-    const visible = matchesText && matchesCategory;
-
-    card.hidden = !visible;
-
-    if (visible) {
-      visibleCount++;
-    }
-  });
-
-  emptyPlants.style.display = visibleCount === 0 ? 'block' : 'none';
-}
-
-searchInput.addEventListener('input', filterPlants);
-filterSelect.addEventListener('change', filterPlants);
-
-/* Current year */
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* Back to top */
-const topBtn = document.getElementById('topBtn');
-
-window.addEventListener('scroll', function () {
-  topBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
-}, { passive: true });
-
-topBtn.addEventListener('click', function () {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-/* Generate and download a local research note */
-document.getElementById('researchForm').addEventListener('submit', function (event) {
-  event.preventDefault();
-
-  const topic = document.getElementById('topic').value;
-  const note = [
-    'NATURAL PRODUCTS RESEARCH NOTE',
-    '================================',
-    'Research topic: ' + topic,
-    'Created: ' + new Date().toLocaleString(),
-    '',
-    'RESEARCH QUESTIONS',
-    '1. What is the chemical composition of the selected material?',
-    '2. Which analytical methods are appropriate?',
-    '3. What evidence supports the reported biological activity?',
-    '4. Which controls and replication strategies are required?',
-    '5. What safety, reproducibility, and ethical issues need evaluation?',
-    '',
-    'IMPORTANT',
-    'This note is an educational planning aid, not medical advice.',
-    'Scientific hypotheses require appropriate experimental validation.'
-  ].join('\r\n');
-
-  const blob = new Blob(['\uFEFF', note], {
-    type: 'text/plain;charset=utf-8'
-  });
-
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-
-  link.href = url;
-  link.download = 'natural-products-research-note.txt';
-  link.style.display = 'none';
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-
-  window.setTimeout(function () {
-    URL.revokeObjectURL(url);
-  }, 1500);
-
-  document.getElementById('formMessage').textContent =
-    'Download requested. No email was sent and no data was uploaded.';
-});
-</script>
+    <script>
+        document.querySelectorAll('.link-item:not(.empty)').forEach(item => {
+            const icon = item.querySelector('img.link-icon');
+            if (icon) {
+                icon.onerror = function() {
+                    this.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDJDNi40NzcgMiAyIDYuNDc3IDIgMTJzNC40NzcgMTAgMTAgMTAgMTAtNC40NzcgMTAtMTBTMTcuNTIzIDIgMTIgMnptMCAyYzQuNDE4IDAgOCAzLjU4MiA4IDhzLTMuNTgyIDgtOCA4LTgtMy41ODItOC04IDMuNTgyLTggOC04eiIgZmlsbD0iIzMzMyIvPjwvc3ZnPg==';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
